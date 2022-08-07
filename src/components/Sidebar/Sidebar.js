@@ -18,9 +18,11 @@ const Sidebar = () => {
   const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/all/rooms`).then((response) => {
-      setRooms(response.data);
-    });
+    axios
+      .get(`https://chatapp1997.herokuapp.com/all/rooms`)
+      .then((response) => {
+        setRooms(response.data);
+      });
   }, []);
 
   useEffect(() => {

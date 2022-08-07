@@ -17,7 +17,7 @@ const SidebarChat = ({ addNewChat, id, name }) => {
     const roomName = prompt("Please enter name for chat room");
     if (roomName) {
       try {
-        await axios.post("http://localhost:5000/group/create", {
+        await axios.post("https://chatapp1997.herokuapp.com/group/create", {
           groupName: roomName,
         });
       } catch (err) {
@@ -28,7 +28,7 @@ const SidebarChat = ({ addNewChat, id, name }) => {
 
   const deleteRoom = async () => {
     try {
-      await axios.delete(`http://localhost:5000/room/${id}`);
+      await axios.delete(`https://chatapp1997.herokuapp.com/room/${id}`);
     } catch (err) {
       console.log(err);
     }

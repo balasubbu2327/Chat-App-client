@@ -25,13 +25,17 @@ const Chat = () => {
 
   useEffect(() => {
     if (roomId) {
-      axios.get(`http://localhost:5000/room/${roomId}`).then((response) => {
-        setRoomName(response.data.name);
-        setUpdatedAt(response.data.updatedAt);
-      });
-      axios.get(`http://localhost:5000/messages/${roomId}`).then((response) => {
-        setMessages(response.data);
-      });
+      axios
+        .get(`https://chatapp1997.herokuapp.com/room/${roomId}`)
+        .then((response) => {
+          setRoomName(response.data.name);
+          setUpdatedAt(response.data.updatedAt);
+        });
+      axios
+        .get(`https://chatapp1997.herokuapp.com/messages/${roomId}`)
+        .then((response) => {
+          setMessages(response.data);
+        });
     }
   }, [roomId]);
 
@@ -46,7 +50,7 @@ const Chat = () => {
       return;
     }
 
-    await axios.post(`http://localhost:5000/messages/new`, {
+    await axios.post(`https://chatapp1997.herokuapp.com/messages/new`, {
       message: input,
       name: user.displayName,
       timestamp: new Date(),
@@ -58,7 +62,7 @@ const Chat = () => {
 
   const deleteChat = async () => {
     try {
-      await axios.delete(`http://localhost:5000/chats/`);
+      await axios.delete(`https://chatapp1997.herokuapp.com/chats/`);
     } catch (err) {
       console.log(err);
     }
